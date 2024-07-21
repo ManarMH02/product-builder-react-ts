@@ -6,7 +6,7 @@ interface IProp extends ButtonHTMLAttributes<HTMLButtonElement> {
     width: "w-full" | "w-fit"
 }
 
-const Button = ({className, children, width, ...rest}: IProp) => {
+const Button = ({ className, children, width, ...rest }: IProp) => {
     return (
         <button
             className={`p-2 text-white rounded-md ${className} ${width}`}
@@ -16,5 +16,5 @@ const Button = ({className, children, width, ...rest}: IProp) => {
         </button>
     )
 }
-~
+
 export default Button

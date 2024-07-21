@@ -1,13 +1,19 @@
 import ProductCard from "./components/ProductCard";
+import { productList } from "./data";
 
 function App() {
+  const renderProductList = productList.map(product =>
+    <ProductCard
+      key={product.id}
+      product={product} />
+  )
   return (
-    <div className="p-10 grid gap-2 grid-cols-1 md:grid-cols-4">
-      <ProductCard />
-      <ProductCard />
-      <ProductCard />
-      <ProductCard />
+    <main className="container mx-auto">
+      <div className="p-10 flex flex-col gap-3 md:flex-row md:gap-4">
+      {renderProductList}
+
     </div>
+    </main>
   );
 }
 
