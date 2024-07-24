@@ -1,4 +1,4 @@
-import { IProduct } from "../interfaces";
+import { IFormInput, IProduct } from "../interfaces";
 
 export const productList:IProduct[] = [ 
     {
@@ -48,5 +48,32 @@ export const productList:IProduct[] = [
             name: "category 1",
             imageURL:"https://picsum.photos/640/480",
         }
+    },
+]
+
+export const formInputsList:IFormInput[] = [
+    {
+        id: "title",
+        name: "title",
+        label: "Product Title",
+        type: "text",
+    },
+    {
+        id: "description",
+        name: "description",
+        label: "Product Description",
+        type: "text",
+    },
+    {
+        id: "imageURL",
+        name: "imageURL",
+        label: "Product imageURL",
+        type: "text",
+    },
+    {
+        id: "price",
+        name: "price",
+        label: "Product Price",
+        type: "text",
     },
 ]

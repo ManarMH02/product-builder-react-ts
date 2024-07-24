@@ -35,8 +35,8 @@ const ProductCard = ({ product }: IProp) => {
                 />
             </div>
             <div className="flex space-x-2 mt-3">
-                <Button className="bg-sky-400" width="w-full">Edit</Button>
-                <Button className="bg-red-500" width="w-full">Delete</Button>
+                <Button className="bg-sky-400 text-white" width="w-full">Edit</Button>
+                <Button className="bg-red-500 text-white" width="w-full">Delete</Button>
             </div>
         </div>
     );
