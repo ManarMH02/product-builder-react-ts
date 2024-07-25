@@ -6,6 +6,7 @@ import { ChangeEvent, FormEvent, useState } from "react";
 import Input from "./components/UI/Input";
 import { IProduct } from "./interfaces";
 import { productValidation } from "./validation";
+import ErrorMsg from "./components/UI/ErrorMsg";
 
 function App() {
   const emptyProduct: IProduct = {
@@ -24,7 +25,14 @@ function App() {
   const [isOpen, setIsOpen] = useState(false);
 
   const [product, setProduct] = useState<IProduct>(emptyProduct);
-
+  const { title, price, description, imageURL } = product
+  
+  const [errors, setErrors] = useState({
+    title: "",
+    description: "",
+    imageURL: "",
+    price: ""
+  })
 
 
   // ------Handlers------
@@ -38,6 +46,7 @@ function App() {
   const onChangeHandler = (event: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
     setProduct({ ...product, [name]: value });
+    setErrors({...errors, [name]:""})
   };
 
   const onCancel = () => {
@@ -48,13 +57,21 @@ function App() {
   const submitHandler = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const errors = productValidation({
-      title: product.title,
-      description: product.description,
-      imageURL: product.imageURL,
-      price: product.price
+      title: title,
+      description: description,
+      imageURL: imageURL,
+      price: price
     })
+
+    const hasErrorMsg= Object.values(errors).some(value => value === "") && Object.values(errors).every(value => value === "")
+    if (!hasErrorMsg) {
+      setErrors(errors)
+      return;
+    }
+    
     console.log(errors)
     console.log(product);
+    
   };
 
   // ------RENDER-------
@@ -73,6 +90,7 @@ function App() {
         value={product[input.name]}
         onChange={onChangeHandler}
       ></Input>
+      <ErrorMsg msg={errors[input.name]}/>
     </div>
   ));
 
